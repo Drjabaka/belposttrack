@@ -18,10 +18,10 @@ class Track:
         table = soup.find_all('table')[0].find_all('tr')[1:]
         for item in table:
             self.items.append([i.text for i in item.find_all('td')])
-        self._counter = 0
-        self._limit = len(self.items)
 
     def __iter__(self):
+        self._counter = 0
+        self._limit = len(self.items)
         return self
 
     def __next__(self):
@@ -38,6 +38,7 @@ class Track:
             return False
 
     def get_all(self):
+        # get data in text format
         if self.items:
             all = ''
             for i in self.items:
